@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    score: 0,
+    userScore: 0,
+    aiScore: 0,
 
 }
 
@@ -10,16 +11,16 @@ export const scoreSlice = createSlice({
     name: 'score',
     initialState,
     reducers: {
-        userScore: (state) => {
-            state.score += 1;
+        userScore(state, action) {
+            state.userScore = action.payload;
         },
-        aiScore: (state) => {
-            state.score += 1;
+        aiScore(state, action) {
+            state.aiScore = action.payload;
         },
     }
 
 
 })
 
-export const { userScore,aiScore} = scoreSlice.actions;
+export const { userScore, aiScore } = scoreSlice.actions;
 export default scoreSlice.reducer;

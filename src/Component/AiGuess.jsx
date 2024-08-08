@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import Sound from "react-sound";
+import Sound from "react-sound";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 const AIGuess = ({ onGameEnd }) => {
     const [number, setNumber] = useState("");
@@ -8,11 +9,11 @@ const AIGuess = ({ onGameEnd }) => {
     const [attempts, setAttempts] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [gameWon, setGameWon] = useState(false);
-    const [userScore, setUserScore] = useState(0);
-    const [aiScore, setAIScore] = useState(0);
     const [audioPlaying, setAudioPlaying] = useState(false);
     const [minRange, setMinRange] = useState(1);
     const [maxRange, setMaxRange] = useState(100);
+    const [userScore, setUserScore] = useState(0);
+    const [aiScore, setAiScore] = useState(0);
 
     const getNumberFromUser = (event) => {
         const value = event.target.value;
@@ -29,17 +30,14 @@ const AIGuess = ({ onGameEnd }) => {
         setNumber("");
         setAIGuess("");
         setAttempts(0);
-        setGameOver(false);
-        setGameWon(false);
-        setUserScore(0);
-        setAIScore(0);
         setAudioPlaying(false);
         setMinRange(1);
         setMaxRange(100);
     };
 
     const getCompletionFromAI = () => {
-        const GROQ_API_KEY = "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";
+        const GROQ_API_KEY =
+            "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";
         const requestData = {
             messages: [
                 {
@@ -80,7 +78,8 @@ const AIGuess = ({ onGameEnd }) => {
             setMinRange(newMin);
             setMaxRange(newMax);
 
-            const GROQ_API_KEY = "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";
+            const GROQ_API_KEY =
+                "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";
             const requestData = {
                 messages: [
                     {
@@ -121,12 +120,11 @@ const AIGuess = ({ onGameEnd }) => {
 
     const handleGameOver = () => {
         setGameOver(true);
-        setUserScore((prev) => prev + 1);
     };
 
     const handleGameWon = () => {
+        setAiScore(aiScore + 1);
         setGameWon(true);
-        setAIScore((prev) => prev + 1);
     };
 
     const extractIntegerFromParagraph = (paragraph) => {
@@ -140,7 +138,9 @@ const AIGuess = ({ onGameEnd }) => {
             <div>
                 <Sound
                     url="/sound.mp3"
-                    playStatus={audioPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+                    playStatus={
+                        audioPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+                    }
                     volume={100}
                 />
             </div>
@@ -181,11 +181,18 @@ const AIGuess = ({ onGameEnd }) => {
                         </button>
                     </div>
 
+
                     {attempts > 0 && !gameOver && !gameWon && (
                         <div className="text-center mt-8">
                             <h2 className="text-2xl text-black font-bold mb-4">
                                 AI Generated Number: {AIGuess}
                             </h2>
+                            {gameWon && (
+                                <h2 className="text-2xl text-black font-bold mb-4">
+                                    You Won the Game
+                                </h2>
+                            )}
+
                             <div className="mt-4 flex justify-center space-x-2">
                                 <button
                                     onClick={() => generateNextNumber(true)}
@@ -242,18 +249,24 @@ const AIGuess = ({ onGameEnd }) => {
 
                 <div className="flex justify-between mt-6 space-x-2">
                     <div className="bg-gray-200 rounded-lg p-4 w-1/2">
-                        <h2 className="text-center text-xl font-semibold text-gray-700">User Score</h2>
-                        <p className="text-center text-2xl font-bold text-gray-800">{userScore}</p>
+                        <h2 className="text-center text-xl font-semibold text-gray-700">
+                            User Score
+                        </h2>
+                        <p className="text-center text-2xl font-bold text-gray-800">
+                            {userScore}
+                        </p>
                     </div>
                     <div className="bg-gray-200 rounded-lg p-4 w-1/2">
-                        <h2 className="text-center text-xl font-semibold text-gray-700">AI Score</h2>
-                        <p className="text-center text-2xl font-bold text-gray-800">{aiScore}</p>
+                        <h2 className="text-center text-xl font-semibold text-gray-700">
+                            AI Score
+                        </h2>
+                        <p className="text-center text-2xl font-bold text-gray-800">
+                            {aiScore}
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
-
     );
 };
 
