@@ -9,7 +9,7 @@ const AIGuess = ({ onGameEnd }) => {
     const [attempts, setAttempts] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [gameWon, setGameWon] = useState(false);
-    const [audioPlaying, setAudioPlaying] = useState(false);
+    // const [audioPlaying, setAudioPlaying] = useState(false);
     const [minRange, setMinRange] = useState(1);
     const [maxRange, setMaxRange] = useState(100);
     const [userScore, setUserScore] = useState(0);
@@ -22,9 +22,9 @@ const AIGuess = ({ onGameEnd }) => {
         }
     };
 
-    const playAudio = () => {
-        setAudioPlaying(true);
-    };
+    // const playAudio = () => {
+    //     // setAudioPlaying(true);
+    // };
 
     const handleReset = () => {
         setNumber("");
@@ -136,13 +136,13 @@ const AIGuess = ({ onGameEnd }) => {
     return (
         <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
             <div>
-                <Sound
+{/*                 <Sound
                     url="/sound.mp3"
                     playStatus={
-                        audioPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+                        audioPlaying ? Sound.status.PLAYING : .status.STOPPED
                     }
                     volume={100}
-                />
+                /> */}
             </div>
             <div className="text-center bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-2xl max-w-lg w-full mx-auto">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 text-blue-500">
