@@ -24,7 +24,8 @@ const HumanGuess = ({ onGameEnd }) => {
             messages: [
                 {
                     role: "system",
-                    content: `Generate a single, random integer between ${minRange} and ${maxRange}. Only provide the number without any additional text, explanations, or formatting   `,
+                    content: `Generate a single, random integer between ${minRange} and ${maxRange}. Only provide the number without any additional text, exgit rebase origin/main
+nations, or formatting   `,
                 },
             ],
             model: "llama3-8b-8192",
@@ -122,7 +123,7 @@ const HumanGuess = ({ onGameEnd }) => {
                 </div>
                 {message && <p className="text-green-500 mt-4 text-2xl text-center">{message}</p>}
 
-                {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+{/*                 {error && <p className="text-red-500 mt-4 text-center">{error}</p>} */}
 
                 <div className="flex justify-between mt-6">
                     <div className="bg-gray-200 rounded-lg p-4 w-1/2 mr-2">

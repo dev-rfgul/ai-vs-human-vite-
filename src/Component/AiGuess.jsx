@@ -139,10 +139,10 @@ const AIGuess = ({ onGameEnd }) => {
                 {/* <Sound
                     url="/sound.mp3"
                     playStatus={
-                        audioPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+                        audioPlaying ? Sound.status.PLAYING : .status.STOPPED
                     }
                     volume={100}
-                /> */}
+                /> */} 
             </div>
             <div className="text-center bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-2xl max-w-lg w-full mx-auto">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 text-blue-500">
