@@ -10,14 +10,14 @@ const HumanGuess = ({ onGameEnd }) => {
     const [userScore, setUserScore] = useState(0);
     const [aiScore, setAIScore] = useState(0);
 
-    const apikey=import.meta.env.API_KEY_FOR_USER;
+    const apikey = import.meta.env.API_KEY_FOR_USER;
 
     // console.log("API Key for User: " + apikey);
     const minRange = 1;
     const maxRange = 100;
 
-    // const GROQ_API_KEY = "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";
-    const GROQ_API_KEY = "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";
+     const GROQ_API_KEY = "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";
+   // const GROQ_API_KEY = "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";
 
     useEffect(() => {
         aiGeneratedNumber();
@@ -127,7 +127,7 @@ nations, or formatting   `,
                 </div>
                 {message && <p className="text-green-500 mt-4 text-2xl text-center">{message}</p>}
 
-{/*                 {error && <p className="text-red-500 mt-4 text-center">{error}</p>} */}
+                {/*                 {error && <p className="text-red-500 mt-4 text-center">{error}</p>} */}
 
                 <div className="flex justify-between mt-6">
                     <div className="bg-gray-200 rounded-lg p-4 w-1/2 mr-2">
