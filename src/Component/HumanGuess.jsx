@@ -16,8 +16,8 @@ const HumanGuess = ({ onGameEnd }) => {
     const minRange = 1;
     const maxRange = 100;
 
-     const GROQ_API_KEY = "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";
-   // const GROQ_API_KEY = "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";
+    const GROQ_API_KEY = "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";
+    // const GROQ_API_KEY = "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";
 
     useEffect(() => {
         aiGeneratedNumber();
